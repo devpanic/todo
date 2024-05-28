@@ -1,20 +1,17 @@
 import './App.css';
-import {useEffect, useState} from "react";
-import axios from 'axios';
+import { Route, Routes } from "react-router-dom";
+import Test from "./components/Test";
+import React from "react";
+import Header from "./components/Header";
 
 function App() {
-  const [hello, setHello] = useState('')
-
-  useEffect(() => {
-    axios.get('/api/hello')
-        .then(response => setHello(response.data))
-        .catch(error => console.log(error))
-  }, []);
-
   return(
-      <div>
-        서버로부터 받은 데이터 : {hello}
-      </div>
+      <>
+          <Header />
+          <Routes>
+              <Route path="/test" element={<Test />} />
+          </Routes>
+      </>
   );
 }
 
